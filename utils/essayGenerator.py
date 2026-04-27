@@ -38,3 +38,15 @@ The essay should have a proper title given by the user. The title should not be 
             "Authorization": f"Bearer {self.AI_KEY}"
         }
 
+    def generateEssay(self, query):
+        self.create_payload(query)
+        self.create_headers()
+        try: 
+            response = requests.post(url=self.AI_URL, headers=self.headers, json=self.payload)
+            response.raise_for_status()
+
+            data = response.json()
+            return data["choices"][0]["message"]["content"]
+        except Exception as e:
+            print( f"Error Occurred: {e}")
+
