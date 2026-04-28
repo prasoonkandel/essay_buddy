@@ -21,11 +21,12 @@ The essay should be in English.
 If the user provides extra instructions, you must follow them unless they conflict with the other rules above.
 """ 
 
-    def create_payload(self, topic, extra_instructions = ""):
+    def create_payload(self, topic, extra_instructions = "", word_count = 500):
         systemInstructions = self.getSystemInstructions()
         user_prompt = f"Topic: {topic}"
         if extra_instructions.strip() != "":
             user_prompt += f"\nExtra Instructions: {extra_instructions.strip()}"
+        user_prompt += f"\nThe essay should be around {word_count} words long."
         self.payload = {
             "model": self.MODEL,
             "messages": [
@@ -42,10 +43,10 @@ If the user provides extra instructions, you must follow them unless they confli
             "Authorization": f"Bearer {self.AI_KEY}"
         }
 
-    def generateEssay(self, topic, extra_instructions = ""):
+    def generateEssay(self, topic, extra_instructions = "", word_count = 500):
         if topic.strip() == "":
             return ( f"Error Occurred: Please provide a topic for the essay.")
-        self.create_payload(topic, extra_instructions = extra_instructions)
+        self.create_payload(topic, extra_instructions = extra_instructions, word_count = word_count)
         self.create_headers()
         try: 
             response = requests.post(url=self.AI_URL, headers=self.headers, json=self.payload)
