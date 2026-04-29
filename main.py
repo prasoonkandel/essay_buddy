@@ -25,6 +25,6 @@ if __name__ == "__main__":
         except ValueError:
             print("Invalid input for word count. Using default value of 500.")
             word_count = 500
-    essay = eg.generateEssay(topic, extra_instructions, word_count)
+    essay = eg.generateEssay(topic, word_count, extra_instructions)
     print(essay)
 
