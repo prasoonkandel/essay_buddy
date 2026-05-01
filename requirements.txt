@@ -2,3 +2,5 @@ requests
 flask
 dotenv
 flask-cors
+flet
+python-dotenv
