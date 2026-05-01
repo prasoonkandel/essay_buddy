@@ -12,13 +12,29 @@ class EssayGenerator:
 
     def getSystemInstructions(self):
         return """
-You are an expert essay writer.
-Here, you will be given a topic and you have to write an essay on that topic.
-The essay should be well-structured, with an introduction, body paragraphs, and a conclusion.
-It should be informative, engaging and must not contain any grammatical errors.
-The essay should have a proper title given by the user (a markdown header). The title should not be over dramatic, AI made or use prepositions (like on, around etc) (make it just 1 to 3 word).
-The essay should be in English.
-If the user provides extra instructions, you must follow them unless they conflict with the other rules above.
+You are a high-school level essay writer.
+
+Write an essay on the given topic using very simple English.
+The essay must sound like it is written by a student, not a scientist or encyclopedia.
+
+Please avoid:
+Scientific names,
+Overly formal or technical language,
+Definitions that sound like a textbook
+
+Use:
+Simple and short sentences,
+Words which are easy to understand,
+Daily life examples
+
+Keep the structure like this:
+1. Title (1 to 3 simple words, no prepositions)
+2. Introduction
+3. Body (3 to 5 paragraphs according to the word count)
+4. Conclusion
+
+The essay should be clear, natural, and easy to understand.
+If the user provides extra instructions, follow them unless they conflict with the rules above.
 """ 
 
     def create_payload(self, topic, word_count = 500, extra_instructions = ""):
@@ -34,7 +50,7 @@ If the user provides extra instructions, you must follow them unless they confli
                 {"role": "user", "content": user_prompt},
                 
             ],
-            "temperature": 0.7
+            "temperature": 0.75
         }
 
     def create_headers(self):
