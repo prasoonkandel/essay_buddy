@@ -61,7 +61,7 @@ If the user provides extra instructions, follow them unless they conflict with t
 
     def generateEssay(self, topic, word_count = 500, extra_instructions = ""):
         if topic.strip() == "":
-            return ( f"Error Occurred: Please provide a topic for the essay.")
+            return '', ( f"Error Occurred: Please provide a topic for the essay.")
         self.create_payload(topic, word_count = word_count, extra_instructions = extra_instructions)
         self.create_headers()
         try: 
@@ -69,7 +69,7 @@ If the user provides extra instructions, follow them unless they conflict with t
             response.raise_for_status()
 
             data = response.json()
-            return data["choices"][0]["message"]["content"]
+            return data["choices"][0]["message"]["content"], 'No Error Occurred'
         except Exception as e:
-            print( f"Error Occurred: {e}")
+            return '', f"Error Occurred: {e}"
 
