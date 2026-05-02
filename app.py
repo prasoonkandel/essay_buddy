@@ -16,6 +16,8 @@ AI_MODEL = os.getenv("AI_MODEL")
 
 app = Flask(__name__)
 
+EG = EssayGenerator(AI_KEY, AI_URL, AI_MODEL)
+
 CORS(app, resources={
     r"/*": {
         "origins": "*",
@@ -35,3 +37,39 @@ def after_request(response):
 @app.route('/', methods=['GET'])
 def home():
     return "Essay Generator API"
+
+@app.route('/api/generate-essay', methods=['POST'])
+def gennerate_essay():
+    data = request.get_json()
+    topic = data.get('topic')
+    word_count = data.get('word_count', 500)
+    extra_instructions = data.get('extra_instructions', '')
+
+    if word_count != 500:
+        try:
+            word_count = int(word_count)
+        except ValueError:
+            return jsonify({"error": "Word count must be an integer"}), 400
+
+        if word_count < 100:
+            return jsonify({"error": "Word count must be at least 100"}), 400
+        elif word_count > 1500:
+            return jsonify({"error": "Word count must be at most 1500"}), 400
+    
+    if not topic:
+        return jsonify({"error": "Topic is required"}), 400
+        
+    essay, error_msg = EG.generateEssay(topic,word_count,extra_instructions)
+
+    if not essay or essay.strip() == "":
+        if error_msg != "":
+            return jsonify({"error": error_msg}), 500
+        else:
+            return jsonify({"error": "Unknown error occurred."}), 500
+    
+    return jsonify({"essay": essay}), 200
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
