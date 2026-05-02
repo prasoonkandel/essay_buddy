@@ -28,7 +28,7 @@ Words which are easy to understand,
 Daily life examples
 
 Keep the structure like this:
-1. Title (1 to 3 simple words, no prepositions)
+1. Title (1 word (use more only if extremely necessary), no prepositions) [Markdown Header format]
 2. Introduction
 3. Body (3 to 5 paragraphs according to the word count)
 4. Conclusion
