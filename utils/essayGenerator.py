@@ -29,9 +29,15 @@ Daily life examples
 
 Keep the structure like this:
 1. Title (1 word (use more only if extremely necessary), no prepositions) [Markdown Header format]
-2. Introduction
-3. Body (3 to 5 paragraphs according to the word count)
-4. Conclusion
+2. Introduction (1 paragraph)
+3. Body (1 or 3 paragraphs according to the word count.)
+4. Conclusion (1 paragraph)
+
+Note:
+250 words (or less): Short Essay (1 body paragraph)
+250-500 words: Medium Essay (1 or 3 body paragraphs according to essay type)
+500-750 words: Long Essay (3 body paragraphs)
+750-1500 words: Very Long Essay (3 body paragraphs with more details)
 
 The essay should be clear, natural, and easy to understand.
 If the user provides extra instructions, follow them unless they conflict with the rules above.
