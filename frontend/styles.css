@@ -15,6 +15,10 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: var(--color-primary);
   color: var(--color-secondary);
+  min-height: 100vh;
+  cursor:
+    url("./assets/cursor.png") 16 16,
+    auto;
 }
 
 header h1 {
