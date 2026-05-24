@@ -55,14 +55,7 @@ function cursorAnimation() {
     mouseTimeout = setTimeout(hideCircles, 200);
   });
 
-  const colors = [
-    "#ff0090",
-    "#8505f5",
-    "#0095ff",
-    "#00dfb2",
-    "#ffdd00",
-    "#ff0000",
-  ];
+  const color = "#ff4000";
 
   // I saw an tutorial on youtube and I was like, "Hey, I can do that in my project". So here we are.
   window.addEventListener("click", (e) => {
@@ -78,8 +71,7 @@ function cursorAnimation() {
       particle.style.left = x + "px";
       particle.style.top = y + "px";
 
-      particle.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
+      particle.style.background = color;
 
       const angle = Math.random() * Math.PI * 2;
       const distance = Math.random() * 167;
