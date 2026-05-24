@@ -33,28 +33,26 @@ function cursorAnimation() {
   }
 
   animateCircles();
+
+  let mouseTimeout;
+  function hideCircles() {
+    circles.forEach((circle) => {
+      circle.style.opacity = "0";
+    });
+  }
+
+  function showCircles() {
+    circles.forEach((circle) => {
+      circle.style.transition = "opacity 0.3s ease-in-out";
+      circle.style.opacity = "1";
+    });
+  }
+
+  window.addEventListener("mousemove", () => {
+    showCircles();
+    clearTimeout(mouseTimeout);
+    mouseTimeout = setTimeout(hideCircles, 200);
+  });
 }
 
 cursorAnimation();
-
-let mouseTimeout;
-const circles = document.querySelectorAll(".circle");
-
-function hideCircles() {
-  circles.forEach((circle) => {
-    circle.style.opacity = "0";
-  });
-}
-
-function showCircles() {
-  circles.forEach((circle) => {
-    circle.style.transition = "opacity 0.3s ease-in-out";
-    circle.style.opacity = "1";
-  });
-}
-
-window.addEventListener("mousemove", () => {
-  showCircles();
-  clearTimeout(mouseTimeout);
-  mouseTimeout = setTimeout(hideCircles, 200);
-});
