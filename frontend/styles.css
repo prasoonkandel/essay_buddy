@@ -49,17 +49,9 @@ header h1 {
 
   animation: explode 700ms ease-out forwards;
 }
-
-@keyframes explode {
-  from {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-
-  to {
-    transform: translate(var(--x), var(--y)) scale(0);
-    opacity: 0;
-  }
+form {
+  max-width: 600px;
+  margin: auto;
 }
 .topic {
   display: flex;
@@ -68,9 +60,10 @@ header h1 {
   margin: 1rem 0;
 }
 
-.topic label {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.7rem);
+.topic span {
+  font-family: "Federant", sans-serif;
+  font-weight: bold;
+  font-size: 36px;
 }
 
 .topic input {
@@ -96,8 +89,20 @@ a,
 button {
   cursor: pointer;
 }
-
+/* 
 input[type="text"],
 textarea {
   cursor: text;
+} */
+
+@keyframes explode {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
 }
