@@ -57,7 +57,7 @@ form div {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin: 1rem 0;
+  margin: 14px 0;
 }
 
 form span {
@@ -65,9 +65,13 @@ form span {
   font-weight: bold;
   font-size: 36px;
 }
-
+form input,
+form select {
+  box-sizing: border-box;
+}
 form input {
-  width: min(320px, 90%);
+  max-width: 80vw;
+  width: 100%;
   padding: 12px 14px;
   border: 3px solid var(--color-secondary);
   border-radius: 12px;
@@ -79,7 +83,8 @@ form input {
   transition: 0.2s ease;
 }
 form select {
-  width: min(320px, 90%);
+  max-width: 80vw;
+  width: 100%;
   padding: 12px 14px;
   border: 3px solid var(--color-secondary);
   border-radius: 12px;
