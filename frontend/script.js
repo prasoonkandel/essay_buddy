@@ -22,12 +22,11 @@ function cursorAnimation() {
       circle.x = x;
       circle.y = y;
 
-      x += 3;
-      y += 3;
+      circle.style.scale = (circle.length - index) / circles.length;
 
       const nextCircle = circles[index + 1] || circles[0];
-      x += (nextCircle.x - x) * 0.35;
-      y += (nextCircle.y - y) * 0.35;
+      x += (nextCircle.x - x) * 0.3;
+      y += (nextCircle.y - y) * 0.2;
     });
 
     requestAnimationFrame(animateCircles);
