@@ -12,6 +12,7 @@ function cursorAnimation() {
     cords.y = event.clientY;
   });
 
+  // This cursor move animation was inspired from a youtube video I saw.
   function animateCircles() {
     let x = cords.x;
     let y = cords.y;
@@ -53,6 +54,49 @@ function cursorAnimation() {
     clearTimeout(mouseTimeout);
     mouseTimeout = setTimeout(hideCircles, 200);
   });
+
+  const colors = [
+    "#ff0090",
+    "#8505f5",
+    "#0095ff",
+    "#00dfb2",
+    "#ffdd00",
+    "#ff0000",
+  ];
+
+  // I saw an tutorial on youtube and I was like, "Hey, I can do that in my project". So here we are.
+  window.addEventListener("click", (e) => {
+    explosion(e.clientX, e.clientY);
+  });
+
+  function explosion(x, y) {
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement("div");
+
+      particle.classList.add("particle");
+
+      particle.style.left = x + "px";
+      particle.style.top = y + "px";
+
+      particle.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 167;
+
+      const moveX = Math.cos(angle) * distance + "px";
+      const moveY = Math.sin(angle) * distance + "px";
+
+      particle.style.setProperty("--x", moveX);
+      particle.style.setProperty("--y", moveY);
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 500);
+    }
+  }
 }
 
 cursorAnimation();
