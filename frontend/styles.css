@@ -4,7 +4,7 @@
   --color-primary: #eab46d;
   --color-secondary: #6f3a00;
   --color-accent: #4e8d13;
-  --color-light: #dfe0de;
+  --color-light: #f8e4c4;
   --color-dark: #1a1a1a;
 }
 
@@ -28,6 +28,10 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+.cursor-trail,
+.cursor-trail .circle {
+  pointer-events: none;
 }
 
 header h1 {
@@ -56,4 +60,44 @@ header h1 {
     transform: translate(var(--x), var(--y)) scale(0);
     opacity: 0;
   }
+}
+.topic {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 1rem 0;
+}
+
+.topic label {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+}
+
+.topic input {
+  width: min(320px, 90%);
+  padding: 12px 14px;
+  border: 3px solid var(--color-secondary);
+  border-radius: 12px;
+  background: var(--color-light);
+  color: var(--color-secondary);
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 4px 4px 0 var(--color-secondary);
+  transition: 0.2s ease;
+}
+
+.topic input:focus {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+input[type="text"],
+textarea {
+  cursor: text;
 }
