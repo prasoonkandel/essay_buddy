@@ -3,7 +3,7 @@
 :root {
   --color-primary: #eab46d;
   --color-secondary: #6f3a00;
-  --color-accent: #98cd5a;
+  --color-accent: #4e8d13;
   --color-light: #dfe0de;
   --color-dark: #1a1a1a;
 }
@@ -24,7 +24,7 @@ body {
   height: 30px;
   width: 30px;
   border-radius: 30px;
-  background-color: var(--color-light);
+  background-color: #ff7344;
   position: absolute;
   top: 0;
   left: 0;
