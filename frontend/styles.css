@@ -53,20 +53,20 @@ form {
   max-width: 600px;
   margin: auto;
 }
-.topic {
+form div {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin: 1rem 0;
 }
 
-.topic span {
+form span {
   font-family: "Federant", sans-serif;
   font-weight: bold;
   font-size: 36px;
 }
 
-.topic input {
+form input {
   width: min(320px, 90%);
   padding: 12px 14px;
   border: 3px solid var(--color-secondary);
@@ -78,8 +78,25 @@ form {
   box-shadow: 4px 4px 0 var(--color-secondary);
   transition: 0.2s ease;
 }
-
-.topic input:focus {
+form select {
+  width: min(320px, 90%);
+  padding: 12px 14px;
+  border: 3px solid var(--color-secondary);
+  border-radius: 12px;
+  background: var(--color-light);
+  color: var(--color-secondary);
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 4px 4px 0 var(--color-secondary);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+form select option {
+  background: var(--color-light);
+  color: var(--color-secondary);
+}
+form input:focus,
+form select:focus {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 var(--color-accent);
   border-color: var(--color-accent);
