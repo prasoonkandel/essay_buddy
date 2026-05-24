@@ -17,12 +17,12 @@ function cursorAnimation() {
     let y = cords.y;
 
     circles.forEach((circle, index) => {
-      circle.style.left = x - 12 + "px";
-      circle.style.top = y - 12 + "px";
+      circle.style.left = x - 15 + "px";
+      circle.style.top = y - 15 + "px";
       circle.x = x;
       circle.y = y;
 
-      circle.style.scale = (circle.length - index) / circles.length;
+      circle.style.scale = (15 - index) / 15;
 
       const nextCircle = circles[index + 1] || circles[0];
       x += (nextCircle.x - x) * 0.3;
