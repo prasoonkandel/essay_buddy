@@ -20,12 +20,36 @@
       </div>
       <div class="word_count">
         <span>Word Count:</span>
-        <select name="word_count" id="word_count">
-          <option value="250">Short (250 words)</option>
-          <option value="500">Medium (500 words)</option>
-          <option value="750">Long (750 words)</option>
-          <option value="1500">Very Long (1500 words)</option>
-        </select>
+        <div class="word-picker">
+          <details>
+            <summary>
+              Word Count
+              <span class="arrow">▼</span>
+            </summary>
+
+            <div class="word-options">
+              <label>
+                <input type="radio" name="word_count" value="250" />
+                <span>Short (250 words)</span>
+              </label>
+
+              <label>
+                <input type="radio" name="word_count" value="500" checked />
+                <span>Medium (500 words)</span>
+              </label>
+
+              <label>
+                <input type="radio" name="word_count" value="750" />
+                <span>Long (750 words)</span>
+              </label>
+
+              <label>
+                <input type="radio" name="word_count" value="1500" />
+                <span>Very Long (1500 words)</span>
+              </label>
+            </div>
+          </details>
+        </div>
       </div>
     </form>
     <div class="cursor-trail">

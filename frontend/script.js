@@ -39,11 +39,13 @@ function cursorAnimation() {
   function hideCircles() {
     circles.forEach((circle) => {
       circle.style.opacity = "0";
+      circle.display = "none";
     });
   }
 
   function showCircles() {
     circles.forEach((circle) => {
+      circle.style.display = "block";
       circle.style.transition = "opacity 0.3s ease-in-out";
       circle.style.opacity = "1";
     });
