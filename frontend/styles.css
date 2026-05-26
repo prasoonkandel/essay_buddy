@@ -94,6 +94,7 @@ form textarea {
   background: var(--color-light);
   color: var(--color-secondary);
   font-size: 1rem;
+  resize: vertical;
   outline: none;
   box-shadow: 4px 4px 0 var(--color-secondary);
   transition: 0.2s ease;
