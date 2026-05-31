@@ -106,6 +106,7 @@ const retryButton = document.querySelector("#retry-btn");
 const generateButton = document.querySelector("#generate-btn");
 const generateAnotherButton = document.querySelector("#generate-another");
 const API_URL = "https://essay-buddy.onrender.com/api/generate-essay";
+const wordCountValue = document.querySelector("#word-count-value");
 
 let lastPayload = null;
 let noticeTimeout = null;
@@ -146,6 +147,21 @@ function setButtonsDisabled(isDisabled) {
   if (retryButton) {
     retryButton.disabled = isDisabled;
   }
+}
+
+function updateWordCountSummary() {
+  if (!wordCountValue) {
+    return;
+  }
+
+  const selected = document.querySelector("input[name='word_count']:checked");
+  if (!selected) {
+    wordCountValue.textContent = "500 words";
+    return;
+  }
+
+  const labelText = selected.parentElement?.querySelector("span")?.textContent;
+  wordCountValue.textContent = labelText || `${selected.value} words`;
 }
 
 function showNotice(message, variant, showRetry = false) {
@@ -544,3 +560,15 @@ if (retryButton) {
     await generateEssay(payload);
   });
 }
+
+const wordOptions = document.querySelectorAll("input[name='word_count']");
+wordOptions.forEach((option) => {
+  option.addEventListener("change", updateWordCountSummary);
+  option.addEventListener("change", () => {
+    const details = option.closest("details");
+    if (details) {
+      details.removeAttribute("open");
+    }
+  });
+});
+updateWordCountSummary();

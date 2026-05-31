@@ -171,11 +171,23 @@ form textarea:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 
   transition: 0.2s ease;
 
   font-family: "Montserrat", sans-serif;
   font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.word-summary-value {
+  margin-left: auto;
+  padding: 4px 10px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 999px;
+  background: rgba(111, 58, 0, 0.08);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.78rem;
   font-weight: 600;
 }
 
