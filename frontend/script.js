@@ -1,3 +1,5 @@
+import "./cursor.js";
+
 const form = document.querySelector("#essay-form");
 const topicInput = document.querySelector("#topic");
 const descriptionInput = document.querySelector("#description");
@@ -77,7 +79,7 @@ function updateWordCountSummary() {
     return;
   }
 
-  const labelText = selected.parentElement?.querySelector("span")?.textContent;
+  const labelText = selected.nextElementSibling?.textContent;
   wordCountValue.textContent = labelText || `${selected.value} words`;
 }
 
@@ -488,15 +490,20 @@ if (noticeCloseButton) {
   });
 }
 
-const wordOptions = document.querySelectorAll("input[name='word_count']");
-wordOptions.forEach((option) => {
-  option.addEventListener("change", updateWordCountSummary);
-  option.addEventListener("change", () => {
-    const details = option.closest("details");
-    if (details) {
-      details.removeAttribute("open");
-    }
-  });
-});
+function handleWordCountChange(event) {
+  const target = event.target;
+  if (!target || !target.matches("input[name='word_count']")) {
+    return;
+  }
+
+  updateWordCountSummary();
+  const details = target.closest("details");
+  if (details) {
+    details.removeAttribute("open");
+  }
+}
+
+document.addEventListener("change", handleWordCountChange);
+document.addEventListener("input", handleWordCountChange);
 updateWordCountSummary();
 updateOutputCardVisibility();
