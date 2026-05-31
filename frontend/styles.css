@@ -277,7 +277,7 @@ button {
   background: var(--color-accent);
   color: white;
   padding: 12px 18px;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Federant", sans-serif;
   font-size: clamp(1.2rem, 3vw, 1.6rem);
   letter-spacing: 0.04em;
   box-shadow: 4px 4px 0 var(--color-secondary);
