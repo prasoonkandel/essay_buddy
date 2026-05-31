@@ -6,6 +6,9 @@
   --color-accent: #4e8d13;
   --color-light: #f8e4c4;
   --color-dark: #1a1a1a;
+  --color-error: #b52920;
+  --color-error-soft: #ffe0dc;
+  --color-error-shadow: #8e1f19;
 }
 
 html,
@@ -349,6 +352,42 @@ button {
     transform 0.28s ease;
 }
 
+.alert-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.alert-message {
+  flex: 1;
+}
+
+.alert-close {
+  border: 2px solid currentColor;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  line-height: 1;
+  padding: 0;
+  transition: 0.2s ease;
+}
+
+.alert-close:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 currentColor;
+}
+
+.alert-close:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 .alert.is-visible {
   opacity: 1;
   transform: translate(-50%, 0);
@@ -367,7 +406,10 @@ button {
 }
 
 .alert.is-error {
-  border-color: var(--color-secondary);
+  border-color: var(--color-error);
+  color: #5a0b0a;
+  background: var(--color-error-soft);
+  box-shadow: 4px 4px 0 var(--color-error-shadow);
 }
 
 .alert-actions {

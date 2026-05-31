@@ -73,7 +73,17 @@
           role="alert"
           aria-live="assertive"
         >
-          <div id="notice-message" class="alert-message"></div>
+          <div class="alert-top">
+            <div id="notice-message" class="alert-message"></div>
+            <button
+              type="button"
+              class="alert-close"
+              id="notice-close"
+              aria-label="Dismiss message"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
           <div class="alert-actions">
             <button type="button" class="secondary-btn" id="retry-btn">
               Try Again

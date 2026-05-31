@@ -102,6 +102,7 @@ const skeleton = document.querySelector("#skeleton");
 const essayOutput = document.querySelector("#essay");
 const notice = document.querySelector("#notice");
 const noticeMessage = document.querySelector("#notice-message");
+const noticeCloseButton = document.querySelector("#notice-close");
 const retryButton = document.querySelector("#retry-btn");
 const generateButton = document.querySelector("#generate-btn");
 const generateAnotherButton = document.querySelector("#generate-another");
@@ -558,6 +559,12 @@ if (retryButton) {
     setFormCollapsed(false);
     const payload = lastPayload || buildPayload();
     await generateEssay(payload);
+  });
+}
+
+if (noticeCloseButton) {
+  noticeCloseButton.addEventListener("click", () => {
+    hideNotice();
   });
 }
 
