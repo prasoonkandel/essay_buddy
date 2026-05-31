@@ -9,63 +9,66 @@
   <body>
     <header><h1>Essay Buddy</h1></header>
     <main class="page">
-      <form id="essay-form" class="essay-form">
-        <div class="topic">
-          <span>Topic:</span>
-          <input
-            type="text"
-            id="topic"
-            name="topic"
-            placeholder="Enter the topic for the essay..."
-          />
-        </div>
-        <div class="word_count">
-          <span>Word Count:</span>
-          <div class="word-picker">
-            <details>
-              <summary>
-                Word Count:
-                <span id="word-count-value" class="word-summary-value"></span>
-                <span class="arrow">▼</span>
-              </summary>
+      <form>
+        <section id="essay-form" class="essay-form">
+          <div class="topic">
+            <span>Topic:</span>
+            <input
+              type="text"
+              id="topic"
+              name="topic"
+              placeholder="Enter the topic for the essay..."
+            />
+          </div>
+          <div class="word_count">
+            <span>Word Count:</span>
+            <div class="word-picker">
+              <details>
+                <summary>
+                  Word Count:
+                  <span id="word-count-value" class="word-summary-value"></span>
+                  <span class="arrow">▼</span>
+                </summary>
 
-              <div class="word-options">
-                <label>
-                  <input type="radio" name="word_count" value="250" />
-                  <span>Short (250 words)</span>
-                </label>
+                <div class="word-options">
+                  <label>
+                    <input type="radio" name="word_count" value="250" />
+                    <span>Short (250 words)</span>
+                  </label>
 
-                <label>
-                  <input type="radio" name="word_count" value="500" checked />
-                  <span>Medium (500 words)</span>
-                </label>
+                  <label>
+                    <input type="radio" name="word_count" value="500" checked />
+                    <span>Medium (500 words)</span>
+                  </label>
 
-                <label>
-                  <input type="radio" name="word_count" value="750" />
-                  <span>Long (750 words)</span>
-                </label>
+                  <label>
+                    <input type="radio" name="word_count" value="750" />
+                    <span>Long (750 words)</span>
+                  </label>
 
-                <label>
-                  <input type="radio" name="word_count" value="1500" />
-                  <span>Very Long (1500 words)</span>
-                </label>
+                  <label>
+                    <input type="radio" name="word_count" value="1500" />
+                    <span>Very Long (1500 words)</span>
+                  </label>
+                </div>
+              </details>
+              <div class="description">
+                <span>Extra Description (Optional):</span>
+                <textarea
+                  id="description"
+                  placeholder="Enter the extra description about the essay..."
+                ></textarea>
               </div>
-            </details>
-            <div class="description">
-              <span>Extra Description (Optional):</span>
-              <textarea
-                id="description"
-                placeholder="Enter the extra description about the essay..."
-              ></textarea>
             </div>
           </div>
-        </div>
-        <div class="actions">
-          <button type="submit" class="primary-btn" id="generate-btn">
-            Generate Essay
-          </button>
-        </div>
+          <div class="actions">
+            <button type="submit" class="primary-btn" id="generate-btn">
+              Generate Essay
+            </button>
+          </div>
+        </section>
       </form>
+
       <section id="output" class="output">
         <div
           id="notice"

@@ -79,7 +79,7 @@ header h1 {
   gap: 24px;
 }
 
-form {
+#essay-form {
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
@@ -102,7 +102,7 @@ form.is-collapsed {
   overflow: hidden;
   pointer-events: none;
 }
-form div {
+#essay-form div {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -114,13 +114,13 @@ form span {
   font-weight: bold;
   font-size: clamp(1.6rem, 4vw, 2.25rem);
 }
-form input,
-form select,
-form textarea {
+#essay-form input,
+#essay-form select,
+#essay-form textarea {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-form input {
+#essay-form input {
   max-width: 100%;
   width: 100%;
   padding: 12px 14px;
@@ -133,7 +133,7 @@ form input {
   box-shadow: 4px 4px 0 var(--color-secondary);
   transition: 0.2s ease;
 }
-form textarea {
+#essay-form textarea {
   box-sizing: border-box;
   max-width: 100%;
   width: 100%;
@@ -148,8 +148,8 @@ form textarea {
   box-shadow: 4px 4px 0 var(--color-secondary);
   transition: 0.2s ease;
 }
-form input:focus,
-form textarea:focus {
+#essay-form input:focus,
+#essay-form textarea:focus {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 var(--color-accent);
   border-color: var(--color-accent);
