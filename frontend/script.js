@@ -3,6 +3,7 @@ const topicInput = document.querySelector("#topic");
 const descriptionInput = document.querySelector("#description");
 const skeleton = document.querySelector("#skeleton");
 const essayOutput = document.querySelector("#essay");
+const outputCard = document.querySelector(".output-card");
 const notice = document.querySelector("#notice");
 const noticeMessage = document.querySelector("#notice-message");
 const noticeCloseButton = document.querySelector("#notice-close");
@@ -17,6 +18,17 @@ let noticeTimeout = null;
 let lastEssayHtml = "";
 let isFormCollapsed = false;
 
+function updateOutputCardVisibility() {
+  if (!outputCard || !skeleton || !essayOutput) {
+    return;
+  }
+
+  const shouldShow =
+    !skeleton.classList.contains("is-hidden") ||
+    !essayOutput.classList.contains("is-hidden");
+  outputCard.classList.toggle("is-hidden", !shouldShow);
+}
+
 function setLoading(isLoading) {
   if (!form) {
     return;
@@ -29,6 +41,7 @@ function setLoading(isLoading) {
     essayOutput.classList.remove("is-visible");
     generateAnotherButton.classList.add("is-hidden");
   }
+  updateOutputCardVisibility();
   setButtonsDisabled(isLoading);
 }
 
@@ -401,6 +414,7 @@ async function generateEssay(payload) {
     essayOutput.classList.add("is-visible");
     generateAnotherButton.classList.remove("is-hidden");
     setFormCollapsed(true);
+    updateOutputCardVisibility();
     hideNotice();
   } catch (error) {
     if (error.name === "AbortError") {
@@ -429,6 +443,7 @@ async function generateEssay(payload) {
       essayOutput.classList.remove("is-hidden");
       essayOutput.classList.add("is-visible");
       generateAnotherButton.classList.remove("is-hidden");
+      updateOutputCardVisibility();
     } else {
       setFormCollapsed(false);
     }
@@ -454,6 +469,7 @@ if (generateAnotherButton) {
     essayOutput.classList.add("is-hidden");
     essayOutput.classList.remove("is-visible");
     generateAnotherButton.classList.add("is-hidden");
+    updateOutputCardVisibility();
   });
 }
 
@@ -461,6 +477,7 @@ if (retryButton) {
   retryButton.addEventListener("click", async () => {
     setFormCollapsed(false);
     const payload = lastPayload || buildPayload();
+    updateOutputCardVisibility();
     await generateEssay(payload);
   });
 }
@@ -482,3 +499,4 @@ wordOptions.forEach((option) => {
   });
 });
 updateWordCountSummary();
+updateOutputCardVisibility();

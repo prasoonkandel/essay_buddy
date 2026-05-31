@@ -332,6 +332,16 @@ button {
   gap: 16px;
 }
 
+.output-card {
+  position: relative;
+  display: grid;
+}
+
+.output-card > .skeleton,
+.output-card > .essay {
+  grid-area: 1 / 1;
+}
+
 .alert {
   border: 3px solid var(--color-secondary);
   border-radius: 12px;
@@ -423,26 +433,29 @@ button {
   flex-wrap: wrap;
 }
 
-.essay {
+.output-card {
   border: 3px solid var(--color-secondary);
   border-radius: 12px;
   background: var(--color-light);
-  color: var(--color-dark);
   box-shadow: 6px 6px 0 var(--color-secondary);
   padding: 18px 20px;
+}
+
+.output-card.is-hidden {
+  display: none;
+}
+
+.essay {
+  color: var(--color-dark);
   font-family: "Roboto Slab", serif;
   font-size: clamp(1rem, 2.2vw, 1.15rem);
   line-height: 1.6;
   opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
+  transition: opacity 0.35s ease;
 }
 
 .essay.is-visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .essay h1,
@@ -542,11 +555,23 @@ button {
 }
 
 .skeleton {
-  border: 3px solid var(--color-secondary);
-  border-radius: 12px;
-  background: var(--color-light);
-  box-shadow: 6px 6px 0 var(--color-secondary);
-  padding: 18px 20px;
+  max-height: 900px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.skeleton:not(.is-hidden) {
+  opacity: 1;
+}
+
+.skeleton.is-hidden {
+  display: block;
+  pointer-events: none;
+}
+
+.output-card .essay.is-hidden,
+.output-card .skeleton.is-hidden {
+  display: block;
 }
 
 .skeleton-title,
@@ -567,6 +592,8 @@ button {
   width: 45%;
   height: 22px;
   margin-bottom: 18px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .skeleton-paragraph {
