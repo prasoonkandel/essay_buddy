@@ -553,7 +553,12 @@ button {
 .skeleton-line {
   height: 16px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #f0d8b1 0%, #fdebcf 50%, #f0d8b1 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(111, 58, 0, 0.28) 0%,
+    rgba(111, 58, 0, 0.16) 50%,
+    rgba(111, 58, 0, 0.28) 100%
+  );
   background-size: 200% 100%;
   animation: shimmer 1.6s ease-in-out infinite;
 }
