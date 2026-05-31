@@ -24,11 +24,20 @@ body {
     url("./assets/cursor.png") 16 16,
     auto;
 }
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
+
+::selection {
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+}
+
+::-moz-selection {
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+}
+
 .cursor-trail .circle {
   height: 25px;
   width: 25px;
