@@ -18,15 +18,15 @@ function cursorAnimation() {
     let y = cords.y;
 
     circles.forEach((circle, index) => {
-      circle.style.left = x - 15 + "px";
-      circle.style.top = y - 15 + "px";
+      circle.style.left = x - 12.5 + "px";
+      circle.style.top = y - 12.5 + "px";
       circle.x = x;
       circle.y = y;
 
-      circle.style.scale = (15 - index) / 15;
+      circle.style.scale = (20 - index) / 20;
 
       const nextCircle = circles[index + 1] || circles[0];
-      x += (nextCircle.x - x) * 0.3;
+      x += (nextCircle.x - x) * 0.2;
       y += (nextCircle.y - y) * 0.2;
     });
 
@@ -39,15 +39,14 @@ function cursorAnimation() {
   function hideCircles() {
     circles.forEach((circle) => {
       circle.style.opacity = "0";
-      circle.display = "none";
     });
   }
 
   function showCircles() {
-    circles.forEach((circle) => {
+    circles.forEach((circle, index) => {
       circle.style.display = "block";
       circle.style.transition = "opacity 0.3s ease-in-out";
-      circle.style.opacity = "1";
+      circle.style.opacity = index === 0 ? "0" : "1";
     });
   }
 

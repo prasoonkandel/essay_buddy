@@ -30,9 +30,9 @@ body {
   box-sizing: border-box;
 }
 .cursor-trail .circle {
-  height: 30px;
-  width: 30px;
-  border-radius: 30px;
+  height: 25px;
+  width: 25px;
+  border-radius: 20px;
   background-color: #ff7344;
   position: fixed;
   display: none;
