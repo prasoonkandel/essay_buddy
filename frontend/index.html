@@ -8,58 +8,118 @@
   </head>
   <body>
     <header><h1>Essay Buddy</h1></header>
-    <form>
-      <div class="topic">
-        <span>Topic:</span>
-        <input
-          type="text"
-          id="topic"
-          name="topic"
-          placeholder="Enter the topic for the essay..."
-        />
-      </div>
-      <div class="word_count">
-        <span>Word Count:</span>
-        <div class="word-picker">
-          <details>
-            <summary>
-              Word Count
-              <span class="arrow">▼</span>
-            </summary>
+    <main class="page">
+      <form id="essay-form" class="essay-form">
+        <div class="topic">
+          <span>Topic:</span>
+          <input
+            type="text"
+            id="topic"
+            name="topic"
+            placeholder="Enter the topic for the essay..."
+          />
+        </div>
+        <div class="word_count">
+          <span>Word Count:</span>
+          <div class="word-picker">
+            <details>
+              <summary>
+                Word Count
+                <span class="arrow">▼</span>
+              </summary>
 
-            <div class="word-options">
-              <label>
-                <input type="radio" name="word_count" value="250" />
-                <span>Short (250 words)</span>
-              </label>
+              <div class="word-options">
+                <label>
+                  <input type="radio" name="word_count" value="250" />
+                  <span>Short (250 words)</span>
+                </label>
 
-              <label>
-                <input type="radio" name="word_count" value="500" checked />
-                <span>Medium (500 words)</span>
-              </label>
+                <label>
+                  <input type="radio" name="word_count" value="500" checked />
+                  <span>Medium (500 words)</span>
+                </label>
 
-              <label>
-                <input type="radio" name="word_count" value="750" />
-                <span>Long (750 words)</span>
-              </label>
+                <label>
+                  <input type="radio" name="word_count" value="750" />
+                  <span>Long (750 words)</span>
+                </label>
 
-              <label>
-                <input type="radio" name="word_count" value="1500" />
-                <span>Very Long (1500 words)</span>
-              </label>
+                <label>
+                  <input type="radio" name="word_count" value="1500" />
+                  <span>Very Long (1500 words)</span>
+                </label>
+              </div>
+            </details>
+            <div class="description">
+              <span>Extra Description (Optional):</span>
+              <textarea
+                id="description"
+                placeholder="Enter the extra description about the essay..."
+              ></textarea>
             </div>
-          </details>
-          <div class="description">
-            <span>Extra Description (Optional):</span>
-            <textarea
-              id="description"
-              placeholder="Enter the extra description about the essay..."
-            >
-            </textarea>
           </div>
         </div>
-      </div>
-    </form>
+        <div class="actions">
+          <button type="submit" class="primary-btn" id="generate-btn">
+            Generate Essay
+          </button>
+        </div>
+      </form>
+      <section id="output" class="output">
+        <div
+          id="notice"
+          class="alert is-hidden"
+          role="alert"
+          aria-live="assertive"
+        >
+          <div id="notice-message" class="alert-message"></div>
+          <div class="alert-actions">
+            <button type="button" class="secondary-btn" id="retry-btn">
+              Try Again
+            </button>
+          </div>
+        </div>
+        <div id="skeleton" class="skeleton is-hidden" aria-hidden="true">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-paragraph">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div class="skeleton-paragraph">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+          <div class="skeleton-paragraph">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+          <div class="skeleton-paragraph">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+        </div>
+        <article
+          id="essay"
+          class="essay is-hidden"
+          aria-live="polite"
+        ></article>
+        <div class="essay-actions">
+          <button
+            type="button"
+            id="generate-another"
+            class="primary-btn is-hidden"
+          >
+            Generate Another
+          </button>
+        </div>
+      </section>
+    </main>
     <div class="cursor-trail">
       <div class="circle"></div>
       <div class="circle"></div>
