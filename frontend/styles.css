@@ -451,9 +451,9 @@ button {
 .essay h4,
 .essay h5,
 .essay h6 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Roboto Slab", sans-serif;
   color: var(--color-secondary);
-  margin: 18px 0 10px;
+  margin: 0px 0 10px;
   letter-spacing: 0.02em;
 }
 
