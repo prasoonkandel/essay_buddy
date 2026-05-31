@@ -42,6 +42,7 @@ body {
 .cursor-trail,
 .cursor-trail .circle {
   pointer-events: none;
+  z-index: 10000;
 }
 
 header h1 {
