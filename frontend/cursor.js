@@ -1,0 +1,95 @@
+function cursorAnimation() {
+  const cords = { x: 0, y: 0 };
+  const circles = document.querySelectorAll(".circle");
+
+  circles.forEach((circle) => {
+    circle.x = 0;
+    circle.y = 0;
+  });
+
+  window.addEventListener("mousemove", (event) => {
+    cords.x = event.clientX;
+    cords.y = event.clientY;
+  });
+
+  // This cursor move animation was inspired from a youtube video I saw.
+  function animateCircles() {
+    let x = cords.x;
+    let y = cords.y;
+
+    circles.forEach((circle, index) => {
+      circle.style.left = x - 12.5 + "px";
+      circle.style.top = y - 12.5 + "px";
+      circle.x = x;
+      circle.y = y;
+
+      circle.style.scale = (20 - index) / 20;
+
+      const nextCircle = circles[index + 1] || circles[0];
+      x += (nextCircle.x - x) * 0.2;
+      y += (nextCircle.y - y) * 0.2;
+    });
+
+    requestAnimationFrame(animateCircles);
+  }
+
+  animateCircles();
+
+  let mouseTimeout;
+  function hideCircles() {
+    circles.forEach((circle) => {
+      circle.style.opacity = "0";
+    });
+  }
+
+  function showCircles() {
+    circles.forEach((circle, index) => {
+      circle.style.display = "block";
+      circle.style.transition = "opacity 0.3s ease-in-out";
+      circle.style.opacity = "1";
+    });
+  }
+
+  window.addEventListener("mousemove", () => {
+    showCircles();
+    clearTimeout(mouseTimeout);
+    mouseTimeout = setTimeout(hideCircles, 200);
+  });
+
+  const color = "#ff4000";
+
+  // I saw an tutorial on youtube and I was like, "Hey, I can do that in my project". So here we are.
+  window.addEventListener("click", (e) => {
+    explosion(e.clientX, e.clientY);
+  });
+
+  function explosion(x, y) {
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement("div");
+
+      particle.classList.add("particle");
+
+      particle.style.left = x + "px";
+      particle.style.top = y + "px";
+
+      particle.style.background = color;
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 167;
+
+      const moveX = Math.cos(angle) * distance + "px";
+      const moveY = Math.sin(angle) * distance + "px";
+
+      particle.style.setProperty("--x", moveX);
+      particle.style.setProperty("--y", moveY);
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 500);
+    }
+  }
+}
+
+cursorAnimation();
