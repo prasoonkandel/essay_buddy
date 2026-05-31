@@ -88,15 +88,10 @@ header h1 {
     max-height 0.35s ease,
     opacity 0.35s ease;
 }
-form.is-loading {
+#essay-form.is-loading,
+#essay-form.is-collapsed {
   max-height: 0;
-  opacity: 0;
-  margin: 0 auto;
-  overflow: hidden;
-  pointer-events: none;
-}
-form.is-collapsed {
-  max-height: 0;
+  height: 0;
   opacity: 0;
   margin: 0 auto;
   overflow: hidden;
