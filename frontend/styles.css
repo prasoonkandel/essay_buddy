@@ -439,6 +439,7 @@ button {
   background: var(--color-light);
   box-shadow: 6px 6px 0 var(--color-secondary);
   padding: 18px 20px;
+  transition: height 0.35s ease;
 }
 
 .output-card.is-hidden {
@@ -565,13 +566,13 @@ button {
 }
 
 .skeleton.is-hidden {
-  display: block;
+  display: none;
   pointer-events: none;
 }
 
 .output-card .essay.is-hidden,
 .output-card .skeleton.is-hidden {
-  display: block;
+  display: none;
 }
 
 .skeleton-title,

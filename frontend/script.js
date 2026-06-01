@@ -20,6 +20,33 @@ let noticeTimeout = null;
 let lastEssayHtml = "";
 let isFormCollapsed = false;
 
+function animateOutputCardHeight() {
+  if (!outputCard || outputCard.classList.contains("is-hidden")) {
+    return;
+  }
+
+  const startHeight = outputCard.getBoundingClientRect().height;
+  outputCard.style.height = `${startHeight}px`;
+  outputCard.style.overflow = "hidden";
+
+  requestAnimationFrame(() => {
+    const endHeight = outputCard.scrollHeight;
+    outputCard.style.height = `${endHeight}px`;
+  });
+
+  outputCard.addEventListener(
+    "transitionend",
+    (event) => {
+      if (event.propertyName !== "height") {
+        return;
+      }
+      outputCard.style.height = "";
+      outputCard.style.overflow = "";
+    },
+    { once: true },
+  );
+}
+
 function updateOutputCardVisibility() {
   if (!outputCard || !skeleton || !essayOutput) {
     return;
@@ -29,6 +56,9 @@ function updateOutputCardVisibility() {
     !skeleton.classList.contains("is-hidden") ||
     !essayOutput.classList.contains("is-hidden");
   outputCard.classList.toggle("is-hidden", !shouldShow);
+  if (shouldShow) {
+    animateOutputCardHeight();
+  }
 }
 
 function setLoading(isLoading) {
