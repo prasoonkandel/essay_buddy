@@ -1,30 +1,34 @@
 function cursorAnimation() {
-  const cords = { x: 0, y: 0 };
+  const coords = { x: 0, y: 0 };
   const circles = document.querySelectorAll(".circle");
+  const explosionColor = "#ff4000";
+  const hideDelayMs = 200;
 
   circles.forEach((circle) => {
     circle.x = 0;
     circle.y = 0;
+    circle.style.transition = "opacity 0.3s ease-in-out";
   });
 
-  window.addEventListener("mousemove", (event) => {
-    cords.x = event.clientX;
-    cords.y = event.clientY;
-  });
+  function trackMouse(event) {
+    coords.x = event.clientX;
+    coords.y = event.clientY;
+  }
 
-  // This cursor move animation was inspired from a youtube video I saw.
+  function positionCircle(circle, x, y, scale) {
+    circle.style.left = `${x - 12.5}px`;
+    circle.style.top = `${y - 12.5}px`;
+    circle.style.scale = scale;
+    circle.x = x;
+    circle.y = y;
+  }
+
   function animateCircles() {
-    let x = cords.x;
-    let y = cords.y;
+    let x = coords.x;
+    let y = coords.y;
 
     circles.forEach((circle, index) => {
-      circle.style.left = x - 12.5 + "px";
-      circle.style.top = y - 12.5 + "px";
-      circle.x = x;
-      circle.y = y;
-
-      circle.style.scale = (20 - index) / 20;
-
+      positionCircle(circle, x, y, (20 - index) / 20);
       const nextCircle = circles[index + 1] || circles[0];
       x += (nextCircle.x - x) * 0.2;
       y += (nextCircle.y - y) * 0.2;
@@ -32,8 +36,6 @@ function cursorAnimation() {
 
     requestAnimationFrame(animateCircles);
   }
-
-  animateCircles();
 
   let mouseTimeout;
   function hideCircles() {
@@ -43,53 +45,52 @@ function cursorAnimation() {
   }
 
   function showCircles() {
-    circles.forEach((circle, index) => {
+    circles.forEach((circle) => {
       circle.style.display = "block";
-      circle.style.transition = "opacity 0.3s ease-in-out";
       circle.style.opacity = "1";
     });
   }
 
-  window.addEventListener("mousemove", () => {
+  function handleMouseMove(event) {
+    trackMouse(event);
     showCircles();
     clearTimeout(mouseTimeout);
-    mouseTimeout = setTimeout(hideCircles, 200);
-  });
+    mouseTimeout = setTimeout(hideCircles, hideDelayMs);
+  }
 
-  const color = "#ff4000";
+  function spawnParticle(x, y) {
+    const particle = document.createElement("div");
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 167;
+    const moveX = `${Math.cos(angle) * distance}px`;
+    const moveY = `${Math.sin(angle) * distance}px`;
 
-  // I saw an tutorial on youtube and I was like, "Hey, I can do that in my project". So here we are.
-  window.addEventListener("click", (e) => {
-    explosion(e.clientX, e.clientY);
-  });
+    particle.classList.add("particle");
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+    particle.style.background = explosionColor;
+    particle.style.setProperty("--x", moveX);
+    particle.style.setProperty("--y", moveY);
 
-  function explosion(x, y) {
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement("div");
+    document.body.appendChild(particle);
 
-      particle.classList.add("particle");
+    setTimeout(() => {
+      particle.remove();
+    }, 500);
+  }
 
-      particle.style.left = x + "px";
-      particle.style.top = y + "px";
-
-      particle.style.background = color;
-
-      const angle = Math.random() * Math.PI * 2;
-      const distance = Math.random() * 167;
-
-      const moveX = Math.cos(angle) * distance + "px";
-      const moveY = Math.sin(angle) * distance + "px";
-
-      particle.style.setProperty("--x", moveX);
-      particle.style.setProperty("--y", moveY);
-
-      document.body.appendChild(particle);
-
-      setTimeout(() => {
-        particle.remove();
-      }, 500);
+  function explodeAt(x, y) {
+    for (let i = 0; i < 30; i += 1) {
+      spawnParticle(x, y);
     }
   }
+
+  window.addEventListener("mousemove", handleMouseMove);
+  window.addEventListener("click", (event) => {
+    explodeAt(event.clientX, event.clientY);
+  });
+
+  animateCircles();
 }
 
 cursorAnimation();

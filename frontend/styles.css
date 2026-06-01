@@ -321,6 +321,12 @@ button {
 .output-card {
   position: relative;
   display: grid;
+  border: 3px solid var(--color-secondary);
+  border-radius: 12px;
+  background: var(--color-light);
+  box-shadow: 6px 6px 0 var(--color-secondary);
+  padding: 18px 20px;
+  transition: height 0.35s ease;
 }
 
 .output-card > .skeleton,
@@ -417,15 +423,6 @@ button {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-}
-
-.output-card {
-  border: 3px solid var(--color-secondary);
-  border-radius: 12px;
-  background: var(--color-light);
-  box-shadow: 6px 6px 0 var(--color-secondary);
-  padding: 18px 20px;
-  transition: height 0.35s ease;
 }
 
 .output-card.is-hidden {
