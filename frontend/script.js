@@ -12,13 +12,35 @@ const noticeCloseButton = document.querySelector("#notice-close");
 const retryButton = document.querySelector("#retry-btn");
 const generateButton = document.querySelector("#generate-btn");
 const generateAnotherButton = document.querySelector("#generate-another");
-const API_URL = "https://essay-buddy.onrender.com/api/generate-essay";
+const API_BASE_URL = (
+  import.meta.env.API_BASE_URL || "https://essay-buddy.onrender.com"
+)
+  .trim()
+  .replace(/\/$/, "");
+const API_URL = `${API_BASE_URL}/api/generate-essay`;
 const wordCountValue = document.querySelector("#word-count-value");
 
 let lastPayload = null;
 let noticeTimeout = null;
 let lastEssayHtml = "";
 let isFormCollapsed = false;
+
+function setEssayVisibility(isVisible) {
+  if (!essayOutput) {
+    return;
+  }
+
+  essayOutput.classList.toggle("is-hidden", !isVisible);
+  essayOutput.classList.toggle("is-visible", isVisible);
+}
+
+function setGenerateAnotherVisible(isVisible) {
+  if (!generateAnotherButton) {
+    return;
+  }
+
+  generateAnotherButton.classList.toggle("is-hidden", !isVisible);
+}
 
 function animateOutputCardHeight() {
   if (!outputCard || outputCard.classList.contains("is-hidden")) {
@@ -69,9 +91,8 @@ function setLoading(isLoading) {
   form.classList.toggle("is-loading", isLoading);
   skeleton.classList.toggle("is-hidden", !isLoading);
   if (isLoading) {
-    essayOutput.classList.add("is-hidden");
-    essayOutput.classList.remove("is-visible");
-    generateAnotherButton.classList.add("is-hidden");
+    setEssayVisibility(false);
+    setGenerateAnotherVisible(false);
   }
   updateOutputCardVisibility();
   setButtonsDisabled(isLoading);
@@ -87,15 +108,11 @@ function setFormCollapsed(shouldCollapse) {
 }
 
 function setButtonsDisabled(isDisabled) {
-  if (generateButton) {
-    generateButton.disabled = isDisabled;
-  }
-  if (generateAnotherButton) {
-    generateAnotherButton.disabled = isDisabled;
-  }
-  if (retryButton) {
-    retryButton.disabled = isDisabled;
-  }
+  [generateButton, generateAnotherButton, retryButton].forEach((button) => {
+    if (button) {
+      button.disabled = isDisabled;
+    }
+  });
 }
 
 function updateWordCountSummary() {
@@ -396,7 +413,7 @@ async function generateEssay(payload) {
   }
 
   hideNotice();
-  if (!essayOutput.classList.contains("is-hidden")) {
+  if (essayOutput && !essayOutput.classList.contains("is-hidden")) {
     lastEssayHtml = essayOutput.innerHTML;
   }
   if (isFormCollapsed) {
@@ -441,10 +458,11 @@ async function generateEssay(payload) {
       throw new Error("The essay response was empty. Please try again.");
     }
 
-    essayOutput.innerHTML = renderMarkdown(data.essay.trim());
-    essayOutput.classList.remove("is-hidden");
-    essayOutput.classList.add("is-visible");
-    generateAnotherButton.classList.remove("is-hidden");
+    if (essayOutput) {
+      essayOutput.innerHTML = renderMarkdown(data.essay.trim());
+    }
+    setEssayVisibility(true);
+    setGenerateAnotherVisible(true);
     setFormCollapsed(true);
     updateOutputCardVisibility();
     hideNotice();
@@ -470,11 +488,10 @@ async function generateEssay(payload) {
         true,
       );
     }
-    if (lastEssayHtml) {
+    if (lastEssayHtml && essayOutput) {
       essayOutput.innerHTML = lastEssayHtml;
-      essayOutput.classList.remove("is-hidden");
-      essayOutput.classList.add("is-visible");
-      generateAnotherButton.classList.remove("is-hidden");
+      setEssayVisibility(true);
+      setGenerateAnotherVisible(true);
       updateOutputCardVisibility();
     } else {
       setFormCollapsed(false);
@@ -498,9 +515,8 @@ if (form) {
 if (generateAnotherButton) {
   generateAnotherButton.addEventListener("click", async () => {
     setFormCollapsed(false);
-    essayOutput.classList.add("is-hidden");
-    essayOutput.classList.remove("is-visible");
-    generateAnotherButton.classList.add("is-hidden");
+    setEssayVisibility(false);
+    setGenerateAnotherVisible(false);
     updateOutputCardVisibility();
   });
 }

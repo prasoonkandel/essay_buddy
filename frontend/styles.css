@@ -115,7 +115,8 @@ form span {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-#essay-form input {
+#essay-form input,
+#essay-form textarea {
   max-width: 100%;
   width: 100%;
   padding: 12px 14px;
@@ -128,20 +129,9 @@ form span {
   box-shadow: 4px 4px 0 var(--color-secondary);
   transition: 0.2s ease;
 }
+
 #essay-form textarea {
-  box-sizing: border-box;
-  max-width: 100%;
-  width: 100%;
-  padding: 12px 14px;
-  border: 3px solid var(--color-secondary);
-  border-radius: 12px;
-  background: var(--color-light);
-  color: var(--color-secondary);
-  font-size: 1rem;
   resize: vertical;
-  outline: none;
-  box-shadow: 4px 4px 0 var(--color-secondary);
-  transition: 0.2s ease;
 }
 #essay-form input:focus,
 #essay-form textarea:focus {
@@ -292,7 +282,8 @@ button {
   transition: 0.2s ease;
 }
 
-.primary-btn:hover {
+.primary-btn:hover,
+.secondary-btn:hover {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 var(--color-secondary);
 }
@@ -316,11 +307,6 @@ button {
   letter-spacing: 0.03em;
   box-shadow: 4px 4px 0 var(--color-secondary);
   transition: 0.2s ease;
-}
-
-.secondary-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--color-secondary);
 }
 
 .output {
