@@ -164,7 +164,9 @@ form span {
 
   box-shadow: 4px 4px 0 var(--color-secondary);
 
-  cursor: pointer;
+  cursor:
+    url("/assets/pointer.png") 16 16,
+    auto;
 
   display: flex;
   justify-content: space-between;
@@ -220,7 +222,9 @@ form span {
 }
 
 .word-options label {
-  cursor: pointer;
+  cursor:
+    url("/assets/pointer.png") 16 16,
+    auto;
 }
 
 .word-options input {
@@ -259,7 +263,9 @@ form span {
 
 a,
 button {
-  cursor: pointer;
+  cursor:
+    url("/assets/pointer.png") 16 16,
+    auto;
 }
 
 .actions {
