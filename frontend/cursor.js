@@ -3,6 +3,12 @@ function cursorAnimation() {
   const circles = document.querySelectorAll(".circle");
   const explosionColor = "#ff4000";
   const hideDelayMs = 200;
+  const cursorUrl = "/assets/cursor.png";
+
+  document.documentElement.style.cursor = `url("${cursorUrl}") 16 16, auto`;
+  if (document.body) {
+    document.body.style.cursor = `url("${cursorUrl}") 16 16, auto`;
+  }
 
   circles.forEach((circle) => {
     circle.x = 0;

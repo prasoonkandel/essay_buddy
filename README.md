@@ -12,3 +12,5 @@ A simple AI assistant which can help you write essays.
 - Responsive UI and design.
 - Beautiful custom cursor and cursor nimation in UI.
 - Felxible backend if want to use this locally.
+
+### Built By Prasoon Kandel

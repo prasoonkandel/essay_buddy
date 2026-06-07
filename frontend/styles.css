@@ -21,7 +21,7 @@ body {
   min-height: 100%;
   overflow-x: hidden;
   cursor:
-    url("./assets/cursor.png") 16 16,
+    url("/assets/cursor.png") 16 16,
     auto;
 }
 * {
