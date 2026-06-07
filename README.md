@@ -71,4 +71,13 @@ cd frontend
 npm run dev
 ```
 
+## How this works:
+
+- The frontend calls the api of our backend.
+- The backend recieves the data from api call.
+- It processes the data and creates a prompt.
+- The essayGenerator then calls a LLM API.
+- The Backend then sends the generated essay to frontend.
+- Frontend then displays the essay beautifully.
+
 ### Built By Prasoon Kandel
