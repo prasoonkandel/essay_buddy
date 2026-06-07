@@ -13,6 +13,10 @@ A simple AI assistant which can help you write essays.
 - Beautiful custom cursor and cursor nimation in UI.
 - Felxible backend if want to use this locally.
 
+# Web UI Screenshot:
+
+![Screenshot](./demo.png)
+
 ## Project Setup Guide:
 
 1. Clone the repository

@@ -225,6 +225,7 @@ form span {
 }
 
 .word-options label {
+  display: inline-block;
 }
 
 .word-options input {
