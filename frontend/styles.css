@@ -26,6 +26,9 @@ body {
 }
 * {
   box-sizing: border-box;
+  cursor:
+    url("/assets/cursor.png") 16 16,
+    auto;
 }
 
 ::selection {
@@ -142,9 +145,6 @@ form span {
 .word-picker {
   max-width: 100%;
   width: 100%;
-  cursor:
-    url("/assets/pointer.png") 16 16,
-    auto;
 }
 
 .word-picker details {
@@ -225,9 +225,6 @@ form span {
 }
 
 .word-options label {
-  cursor:
-    url("/assets/pointer.png") 16 16,
-    auto;
 }
 
 .word-options input {
