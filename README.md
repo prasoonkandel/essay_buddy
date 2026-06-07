@@ -13,7 +13,11 @@ A simple AI assistant which can help you write essays.
 - Beautiful custom cursor and cursor nimation in UI.
 - Felxible backend if want to use this locally.
 
-# Web UI Screenshot:
+## Tech Stack:
+
+  <img src="https://skillicons.dev/icons?i=python,flask,html,css,js,nodejs,npm,vite,vercel,git,github" />
+
+## Web UI Screenshot:
 
 ![Screenshot](./demo.png)
 
