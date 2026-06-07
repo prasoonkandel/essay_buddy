@@ -142,6 +142,9 @@ form span {
 .word-picker {
   max-width: 100%;
   width: 100%;
+  cursor:
+    url("/assets/pointer.png") 16 16,
+    auto;
 }
 
 .word-picker details {
