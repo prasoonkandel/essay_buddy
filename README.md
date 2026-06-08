@@ -1,9 +1,17 @@
 # Essay Buddy
 
 A simple AI assistant which can help you write essays.
+<p>
+    <a href="https://essaybuddy.vercel.app" target="_blank">
+       <img src="https://img.shields.io/badge/Website_Demo-1D4ED8?style=for-the-badge&logo=vercel&logoColor=white" />
+    </a>
+</p>
 
-![Fork Repo](https://github.com/prasoonkandel/notes_cpp/fork)
-
+<p>
+    <a href="https://github.com/prasoonkandel/notes_cpp/fork" target="_blank">
+       <img src="https://img.shields.io/badge/Fork_Repo-B45309?style=for-the-badge&logo=github&logoColor=white" />
+    </a>
+</p>
 ## Features
 
 - Generates an essay on your desired topic.
