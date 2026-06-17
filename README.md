@@ -1,6 +1,7 @@
 # Essay Buddy
 
 A simple AI assistant which can help you write essays.
+
 <p>
     <a href="https://essaybuddy.vercel.app" target="_blank">
        <img src="https://img.shields.io/badge/Website_Demo-1D4ED8?style=for-the-badge&logo=vercel&logoColor=white" />
@@ -88,4 +89,4 @@ npm run dev
 - The Backend then sends the generated essay to frontend.
 - Frontend then displays the essay beautifully.
 
-### Built By Prasoon Kandel
+> ### Built By Prasoon Kandel
