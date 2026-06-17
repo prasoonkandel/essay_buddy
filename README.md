@@ -1,6 +1,6 @@
 # Essay Buddy
 
-A simple AI assistant which can help you write essays.
+> A simple AI assistant which can help you write essays.
 
 <p>
     <a href="https://essaybuddy.vercel.app" target="_blank">
@@ -59,6 +59,8 @@ AI_URL=https://your-ai-provider-endpoint
 AI_KEY=your_api_key_here
 AI_MODEL=your_model_name
 ```
+
+> Note: This project currently uses OpenRouter as AI provider. Using a different AI provider may require code changes.
 
 Create a `.env` file in the frontend dir and add:
 
