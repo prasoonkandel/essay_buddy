@@ -13,6 +13,7 @@
        <img src="https://img.shields.io/badge/Fork_Repo-B45309?style=for-the-badge&logo=github&logoColor=white" />
     </a>
 </p>
+
 ## Features
 
 - Generates an essay on your desired topic.
